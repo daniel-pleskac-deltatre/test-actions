@@ -1,0 +1,31 @@
+name: Print inputs
+
+on: 
+  workflow_dispatch:
+    inputs:
+      cfg_dir:
+        description: "Version of axis-infra-root repo"
+        default: "axis-product/opsdev/opsdev2"
+        required: true
+      src_version:
+        description: "Version of axis-infra-root repo"
+        default: master
+        required: true
+      cfg_version:
+        description: "Version of axis-infra-config repo"
+        default: master
+        required: true
+      components:
+        description: "List of components"
+        default: all
+        required: true
+
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: print
+        run: |
+          echo '${{ github.event.inputs.cfg_dir }}'
